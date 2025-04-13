@@ -341,11 +341,11 @@ game.collection = [];
 
 game.catchPokemon = function(pokemonObj) {
         if (game.party.length < 6) {
-            /*const sorting = [...game.party, pokemonObj]; // attemtp to code removing the lowest hp pokemon but too tired
+            /*const sorting = [...game.party, pokemonObj]; // attemtp to code removing the lowest hp pokemon but too
             sorting.sort((a, b) => a.hp - b.hp);
             sorting.splice(7,1);*/
-            game.party.push(pokemonObj) 
-        } else { game.collection.push(pokemonObj)}
+            game.party.push(pokemonObj); 
+        } else { game.collection.push(pokemonObj);}
     };
     game.items.forEach((pokeLess) => {
         if(pokeLess.name === "pokeball"){    
@@ -371,6 +371,28 @@ Also, ensure that the Pokemon isn't added to the `game.party` or the `game.colle
 
 Solve Exercise 19 here:
 */
+game.collection = [];
+
+game.catchPokemon = function(pokemonObj) {
+        const pokeballItem = game.items.find(item => item.name === "pokeball");
+
+    if (pokeballItem.quantity === 0) {
+        console.log("Not enough pokeballs. Buy more!");
+        return;
+    } pokeballItem.quantity -= 1;
+            if (game.party.length < 6) {
+                game.party.push(pokemonObj); 
+                } else { game.collection.push(pokemonObj);
+
+                 }
+};
+    
+
+game.catchPokemon(pokemon[15]); 
+
+console.log("Party:", game.party);
+console.log("Collection:", game.collection);
+console.log("Items:", game.items);
 
 /*
 Exercise 20
@@ -409,6 +431,27 @@ Log the object when it's constructed.
 Solve Exercise 21 here:
 */
 
+game.collection = [];
 
+game.catchPokemon = function(pokemonObj) {
+        const pokeballItem = game.items.find(item => item.name === "pokeball");
+
+    if (pokeballItem.quantity === 0) {
+        console.log("Not enough pokeballs. Buy more!");
+        return;
+    } pokeballItem.quantity -= 1;
+            if (game.party.length < 6) {
+                game.party.push(pokemonObj); 
+                } else { game.collection.push(pokemonObj);
+
+                 }
+};
+    
+
+game.catchPokemon(pokemon[15]); 
+
+console.log("Party:", game.party);
+console.log("Collection:", game.collection);
+console.log("Items:", game.items);
 
 
