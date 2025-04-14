@@ -404,7 +404,29 @@ If there is not a match, then return a string noting that the selected Pokemon d
 
 Solve Exercise 20 here:
 */
+game.collection = [];
 
+game.catchPokemon = function(pokemonName) {
+    const pokeballItem = game.items.find(item => item.name === "pokeball");
+    const findPokemon = pokemon.find(p => p.name.toLowerCase() === pokemonName.toLowerCase());
+
+    if (!findPokemon) {     //! is the logical NOT operator and inverts the truth of the value 
+        console.log("That pokeuser doesn't exist.");
+        return;
+    } pokeballItem.quantity -= 1;
+            if (game.party.length < 6) {
+                game.party.push(findPokemon); 
+                } else { game.collection.push(findPokemon);
+
+                 }
+};
+    
+
+game.catchPokemon("cuak cuak"); 
+
+console.log("Party:", game.party);
+console.log("Collection:", game.collection);
+console.log("Items:", game.items);
 /*
 Exercise 21
 Dynamically construct an object with the existing `pokemon` data sorted by the different pokemon types. The object will have this structure:
@@ -430,28 +452,16 @@ Log the object when it's constructed.
 
 Solve Exercise 21 here:
 */
+const pokeSortedData = { };
+    pokemon.forEach(poke => {
+        if(!pokeSortedData[poke.type]) {
+            pokeSortedData[poke.type] = [];
+        }
+            pokeSortedData[poke.type].push(poke);
 
-game.collection = [];
+    });
 
-game.catchPokemon = function(pokemonObj) {
-        const pokeballItem = game.items.find(item => item.name === "pokeball");
+console.log(pokeSortedData);
 
-    if (pokeballItem.quantity === 0) {
-        console.log("Not enough pokeballs. Buy more!");
-        return;
-    } pokeballItem.quantity -= 1;
-            if (game.party.length < 6) {
-                game.party.push(pokemonObj); 
-                } else { game.collection.push(pokemonObj);
-
-                 }
-};
-    
-
-game.catchPokemon(pokemon[15]); 
-
-console.log("Party:", game.party);
-console.log("Collection:", game.collection);
-console.log("Items:", game.items);
 
 
